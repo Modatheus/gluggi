@@ -27,13 +27,13 @@ class Weather extends React.Component {
 
   componentWillMount() {
     if (navigator) {
-      console.log(navigator.geolocation)
-      navigator.geolocation.getCurrentPosition(this.location, this.failedLocation, {timeout: 10000})
+      navigator.geolocation.watchPosition(this.location, this.failedLocation)
     }
   }
 
-  failedLocation() {
+  failedLocation(error) {
     console.log('failed to get location')
+    console.log(error)
   }
 
   location({coords}) {
