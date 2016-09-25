@@ -9,8 +9,14 @@ class Calendar extends React.Component {
     events: []
   }
 
-  componentWillMount() {
-    const url = `${process.env.API_URL}/api/calendar`
+  componentWillReceiveProps({lat, lon}) {
+    if (lat && lon) {
+      this.fetchEvents(lat, lon)
+    }
+  }
+
+  fetchEvents(lat, lon) {
+    const url = `${process.env.API_URL}/api/calendar?lat=${lat}&lon=${lon}`
     fetch(url)
       .then(response => response.json())
       .then(events => this.setState({events}))
