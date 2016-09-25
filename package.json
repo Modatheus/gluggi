@@ -14,7 +14,7 @@
     "babel-runtime": "6.9.2",
     "material-design-icons": "2.2.3",
     "moment": "2.14.1",
-    "react": "^15.3.0",
+    "react": "15.3.0",
     "react-dom": "15.3.0",
     "request-promise": "3.0.0"
   },

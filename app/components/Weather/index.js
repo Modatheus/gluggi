@@ -19,26 +19,10 @@ class Weather extends React.Component {
     node: React.PropTypes.object
   }
 
-  constructor(props) {
-    super(props)
-    this.location = ::this.location
-    this.fetchWeather = ::this.fetchWeather
-  }
-
-  componentWillMount() {
-    if (navigator) {
-      navigator.geolocation.watchPosition(this.location, this.failedLocation)
+  componentWillReceiveProps({lat, lon}) {
+    if (lat && lon) {
+      this.fetchWeather(lat, lon)
     }
-  }
-
-  failedLocation(error) {
-    console.log('failed to get location')
-    console.log(error)
-  }
-
-  location({coords}) {
-    const {latitude, longitude} = coords
-    this.fetchWeather(latitude.toFixed(2), longitude.toFixed(2))
   }
 
   fetchWeather(lat, lon) {

@@ -17,7 +17,7 @@ class Calendar extends React.Component {
   }
 
   render() {
-    return this.state.events
+    return this.state.events.length
       ? <Events events={this.state.events} />
       : null
   }
